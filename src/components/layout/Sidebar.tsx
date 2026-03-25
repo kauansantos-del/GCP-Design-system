@@ -94,8 +94,8 @@ export function Sidebar() {
 
   return (
     <aside className="w-56 shrink-0 border-r border-[var(--border)] bg-[var(--gray-2)] h-screen">
-      <ScrollArea.Root className="h-full">
-        <ScrollArea.Viewport className="h-full w-full">
+      <ScrollArea.Root className="h-full" type="hover">
+        <ScrollArea.Viewport className="h-full w-full [&>div]:!block">
       <div className="p-5">
         <NavLink to="/" className="no-underline flex flex-col">
           <img

@@ -1,0 +1,293 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import "tailwindcss";
+
+/* ============================================================
+   DESIGN TOKENS — Radix Colors (Light)
+   ============================================================ */
+:root {
+  /* Logo theme switching */
+  --logo-light-display: block;
+  --logo-dark-display: none;
+
+  /* Gray */
+  --gray-1: #FCFCFD;
+  --gray-2: #F8F9FA;
+  --gray-3: #F0F1F3;
+  --gray-4: #E8E9EC;
+  --gray-5: #DFE1E4;
+  --gray-6: #D4D6DA;
+  --gray-7: #C2C5CA;
+  --gray-8: #A9ADB4;
+  --gray-9: #8B8F96;
+  --gray-10: #808489;
+  --gray-11: #60646C;
+  --gray-12: #272A2E;
+
+  /* Principal (Blue) */
+  --principal-1: #FBFDFF;
+  --principal-2: #F4FAFF;
+  --principal-3: #E6F4FE;
+  --principal-4: #D5ECFD;
+  --principal-5: #C2E1FC;
+  --principal-6: #A9D3F7;
+  --principal-7: #8AC0EF;
+  --principal-8: #5FA8E4;
+  --principal-9: #0091FF;
+  --principal-10: #0081E6;
+  --principal-11: #006DCB;
+  --principal-12: #113264;
+
+  /* Vermelho */
+  --red-1: #FFFCFC;
+  --red-2: #FFF7F7;
+  --red-3: #FEEBEC;
+  --red-4: #FFDBDC;
+  --red-5: #FFCDCE;
+  --red-6: #FDBDBE;
+  --red-7: #F4A9AA;
+  --red-8: #EB8E90;
+  --red-9: #E5484D;
+  --red-10: #DC3D43;
+  --red-11: #CE2C31;
+  --red-12: #641723;
+
+  /* Amarelo */
+  --yellow-1: #FDFDF9;
+  --yellow-2: #FFFCE8;
+  --yellow-3: #FFFBD1;
+  --yellow-4: #FFF8BB;
+  --yellow-5: #FEF2A4;
+  --yellow-6: #F9E68C;
+  --yellow-7: #EFD36C;
+  --yellow-8: #EBBC00;
+  --yellow-9: #F5D90A;
+  --yellow-10: #F7CE00;
+  --yellow-11: #946800;
+  --yellow-12: #35290F;
+
+  /* Green */
+  --green-1: #FBFEFC;
+  --green-2: #F4FBF6;
+  --green-3: #E6F6EB;
+  --green-4: #D6F1DE;
+  --green-5: #C4E8D1;
+  --green-6: #AFDDC2;
+  --green-7: #93CEAF;
+  --green-8: #65BA97;
+  --green-9: #46A758;
+  --green-10: #3E9B4F;
+  --green-11: #2A7E3B;
+  --green-12: #203C25;
+
+  /* Azul (Teal) */
+  --teal-1: #FAFDFE;
+  --teal-2: #F2FAFB;
+  --teal-3: #DEF7F9;
+  --teal-4: #CAF1F6;
+  --teal-5: #B5E9F0;
+  --teal-6: #9DDDE7;
+  --teal-7: #7DCEDC;
+  --teal-8: #3DB9CF;
+  --teal-9: #00A2C7;
+  --teal-10: #0797B9;
+  --teal-11: #107D98;
+  --teal-12: #0D3C48;
+
+  /* Violeta */
+  --violet-1: #FDFCFE;
+  --violet-2: #FAF8FF;
+  --violet-3: #F4F0FE;
+  --violet-4: #EBE4FF;
+  --violet-5: #E1D9FF;
+  --violet-6: #D4CAFE;
+  --violet-7: #C2B5F5;
+  --violet-8: #AA99EC;
+  --violet-9: #6E56CF;
+  --violet-10: #654DC4;
+  --violet-11: #6550B9;
+  --violet-12: #2F265F;
+
+  /* Semantic Aliases */
+  --background: var(--gray-1);
+  --foreground: var(--gray-12);
+  --muted: var(--gray-3);
+  --muted-foreground: var(--gray-11);
+  --border: var(--gray-6);
+  --ring: var(--principal-9);
+  --accent: var(--principal-9);
+  --accent-foreground: #FFFFFF;
+  --destructive: var(--red-9);
+  --success: var(--green-9);
+  --warning: var(--yellow-9);
+
+  /* Typography */
+  --font-display: 'Archivo', sans-serif;
+  --font-heading: 'Archivo', sans-serif;
+  --font-body: 'Raleway', sans-serif;
+}
+
+/* ============================================================
+   DESIGN TOKENS — Radix Colors (Dark)
+   ============================================================ */
+.dark {
+  --logo-light-display: none;
+  --logo-dark-display: block;
+
+  --gray-1: #111214;
+  --gray-2: #18191B;
+  --gray-3: #212225;
+  --gray-4: #28292D;
+  --gray-5: #2F3035;
+  --gray-6: #393A40;
+  --gray-7: #46484F;
+  --gray-8: #5F6169;
+  --gray-9: #6C6E76;
+  --gray-10: #797B83;
+  --gray-11: #B0B2B8;
+  --gray-12: #EBEBED;
+
+  --principal-1: #0D1520;
+  --principal-2: #111B2A;
+  --principal-3: #0D2847;
+  --principal-4: #003362;
+  --principal-5: #004074;
+  --principal-6: #104D87;
+  --principal-7: #205D9E;
+  --principal-8: #2870BD;
+  --principal-9: #0090FF;
+  --principal-10: #3B9EFF;
+  --principal-11: #70B8FF;
+  --principal-12: #C2E0FF;
+
+  --red-1: #191111;
+  --red-2: #201314;
+  --red-3: #3B1219;
+  --red-4: #500F1C;
+  --red-5: #611623;
+  --red-6: #72232D;
+  --red-7: #8C333A;
+  --red-8: #B54548;
+  --red-9: #E5484D;
+  --red-10: #EC5D5E;
+  --red-11: #FF9592;
+  --red-12: #FFD1D9;
+
+  --yellow-1: #14120B;
+  --yellow-2: #1B180F;
+  --yellow-3: #2D2305;
+  --yellow-4: #362B00;
+  --yellow-5: #433500;
+  --yellow-6: #524202;
+  --yellow-7: #665417;
+  --yellow-8: #836A21;
+  --yellow-9: #FFC53D;
+  --yellow-10: #FFFF57;
+  --yellow-11: #F5E147;
+  --yellow-12: #F6EEB4;
+
+  --green-1: #0E1512;
+  --green-2: #121B17;
+  --green-3: #132D21;
+  --green-4: #113B29;
+  --green-5: #174937;
+  --green-6: #174933;
+  --green-7: #174933;
+  --green-8: #2F7C57;
+  --green-9: #46A758;
+  --green-10: #55B467;
+  --green-11: #71D083;
+  --green-12: #C2F0C2;
+
+  --teal-1: #0B161A;
+  --teal-2: #101B20;
+  --teal-3: #082C36;
+  --teal-4: #003848;
+  --teal-5: #004558;
+  --teal-6: #045468;
+  --teal-7: #12677E;
+  --teal-8: #11809C;
+  --teal-9: #00A2C7;
+  --teal-10: #23AFD0;
+  --teal-11: #4CCCE6;
+  --teal-12: #B6ECF7;
+
+  --violet-1: #14121F;
+  --violet-2: #1B1525;
+  --violet-3: #291F43;
+  --violet-4: #33255B;
+  --violet-5: #3C2E69;
+  --violet-6: #473876;
+  --violet-7: #56468B;
+  --violet-8: #6958AD;
+  --violet-9: #6E56CF;
+  --violet-10: #7D66D9;
+  --violet-11: #BAA7FF;
+  --violet-12: #E2DDFE;
+
+  --background: var(--gray-1);
+  --foreground: var(--gray-12);
+  --muted: var(--gray-3);
+  --muted-foreground: var(--gray-11);
+  --border: var(--gray-6);
+  --accent-foreground: #FFFFFF;
+}
+
+/* ============================================================
+   BASE RESET
+   ============================================================ */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  background: var(--background);
+  color: var(--foreground);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ============================================================
+   TYPOGRAPHY UTILITY CLASSES
+   ============================================================ */
+
+/* Display — Archivo Extrabold (800) */
+.display-72 { font-family: var(--font-display); font-size: 4.5rem; font-weight: 800; line-height: 1.1; letter-spacing: 0.01em; }
+.display-64 { font-family: var(--font-display); font-size: 4rem; font-weight: 800; line-height: 1.1; letter-spacing: 0.01em; }
+.display-60 { font-family: var(--font-display); font-size: 3.75rem; font-weight: 800; line-height: 1.1; letter-spacing: 0.01em; }
+.display-56 { font-family: var(--font-display); font-size: 3.5rem; font-weight: 800; line-height: 1.1; letter-spacing: 0.01em; }
+.display-52 { font-family: var(--font-display); font-size: 3.25rem; font-weight: 800; line-height: 1.1; letter-spacing: 0.01em; }
+.display-48 { font-family: var(--font-display); font-size: 3rem; font-weight: 800; line-height: 1.1; letter-spacing: 0.01em; }
+.display-44 { font-family: var(--font-display); font-size: 2.75rem; font-weight: 800; line-height: 1.1; letter-spacing: 0.01em; }
+.display-40 { font-family: var(--font-display); font-size: 2.5rem; font-weight: 800; line-height: 1.1; letter-spacing: 0.01em; }
+.display-36 { font-family: var(--font-display); font-size: 2.25rem; font-weight: 800; line-height: 1.1; letter-spacing: 0.01em; }
+
+/* ============================================================
+   SPARKLE ANIMATION
+   ============================================================ */
+@keyframes sparkle {
+  0%, 100% { opacity: 0; transform: scale(0) translateY(0); }
+  50% { opacity: 1; transform: scale(1) translateY(-10px); }
+}
+.animate-sparkle {
+  animation: sparkle 2s ease-in-out infinite;
+}
+
+/* ============================================================
+   FADE-IN BLUR ANIMATION
+   ============================================================ */
+@keyframes fadeInBlur {
+  from { opacity: 0; filter: blur(8px); transform: translateY(20px); }
+  to { opacity: 1; filter: blur(0px); transform: translateY(0); }
+}
+
+.fade-in-section {
+  animation: fadeInBlur 0.5s ease-out both;
+}

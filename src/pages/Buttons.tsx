@@ -84,7 +84,7 @@ export function Buttons() {
                   {statuses.map((status) => (
                     <td key={status} className="p-4 text-center">
                       <div className="inline-flex">
-                        <Button type={type} status={status} size="Desktop" text="Label" static />
+                        <Button type={type} status={status} text="Label" static />
                       </div>
                     </td>
                   ))}

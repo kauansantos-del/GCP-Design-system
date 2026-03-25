@@ -24,7 +24,7 @@ const ThreeDotsIcon = () => (
 export function ProjectCard({
   status = 'Default',
   title = 'Residencial Flor São Caetano',
-  tag = 'Prático',
+  tag: _tag = 'Prático',
   tagType = 'pratico',
   editedAt = 'Editado  1 hora atrás',
   image,

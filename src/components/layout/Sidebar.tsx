@@ -92,7 +92,7 @@ export function Sidebar() {
   }
 
   return (
-    <aside className="w-56 shrink-0 border-r border-[var(--border)] bg-[var(--gray-2)] min-h-screen sticky top-0 overflow-y-auto">
+    <aside className="w-56 shrink-0 border-r border-[var(--border)] bg-[var(--gray-2)] h-screen overflow-y-auto">
       <div className="p-5">
         <NavLink to="/" className="no-underline flex flex-col">
           <img

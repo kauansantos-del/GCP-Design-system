@@ -35,7 +35,7 @@ export function Home() {
       className="max-w-5xl mx-auto"
       initial={{ opacity: 0, y: 20, filter: 'blur(8px)' }}
       animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-      transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1.0] }}
+      transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1.0] as const }}
     >
       <motion.div
         className="mb-12"

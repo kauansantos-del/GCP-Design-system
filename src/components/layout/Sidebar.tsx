@@ -2,6 +2,7 @@ import { NavLink, useLocation, useNavigate } from 'react-router'
 import { motion } from 'framer-motion'
 import { useState } from 'react'
 import { cn } from '@/lib/cn'
+import * as ScrollArea from '@radix-ui/react-scroll-area'
 
 type Section = {
   label: string
@@ -92,7 +93,9 @@ export function Sidebar() {
   }
 
   return (
-    <aside className="w-56 shrink-0 border-r border-[var(--border)] bg-[var(--gray-2)] h-screen overflow-y-auto">
+    <aside className="w-56 shrink-0 border-r border-[var(--border)] bg-[var(--gray-2)] h-screen">
+      <ScrollArea.Root className="h-full">
+        <ScrollArea.Viewport className="h-full w-full">
       <div className="p-5">
         <NavLink to="/" className="no-underline flex flex-col">
           <img
@@ -233,6 +236,15 @@ export function Sidebar() {
           </div>
         </div>
       </motion.nav>
+        <div className="h-6" />
+        </ScrollArea.Viewport>
+        <ScrollArea.Scrollbar
+          className="flex touch-none select-none p-0.5 transition-colors duration-200 data-[orientation=vertical]:w-2 hover:bg-[var(--gray-3)]"
+          orientation="vertical"
+        >
+          <ScrollArea.Thumb className="relative flex-1 rounded-full bg-[var(--gray-6)] hover:bg-[var(--gray-8)] transition-colors duration-200" />
+        </ScrollArea.Scrollbar>
+      </ScrollArea.Root>
     </aside>
   )
 }

@@ -71,7 +71,7 @@ export function NavbarButton({
           'flex items-center gap-[4px] rounded-[8px] cursor-pointer bg-transparent transition-all duration-200 w-full px-[8px] py-[12px] h-[40px]',
           currentStatus === 'Default' && 'text-[var(--gray-12)]',
           currentStatus === 'Hover' && 'bg-[var(--red-2)] text-[var(--red-12)]',
-          currentStatus === 'Click' && 'bg-[var(--red-3)] text-[var(--red-12)]',
+          currentStatus === 'Click' && 'bg-[var(--red-4)] text-[var(--red-12)]',
           className,
         )}
         style={{ fontFamily: "'Raleway', sans-serif", fontSize: '14px', fontWeight: 500 }}

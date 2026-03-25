@@ -23,7 +23,7 @@ const ThreeDotsIcon = () => (
 )
 
 const LogoutIcon = () => (
-  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="var(--red-9)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
     <path d="M7 17H4C3.44772 17 3 16.5523 3 16V4C3 3.44772 3.44772 3 4 3H7" />
     <path d="M13 14L17 10L13 6" />
     <path d="M17 10H7" />
@@ -68,10 +68,10 @@ export function NavbarButton({
     return (
       <button
         className={cn(
-          'flex items-center gap-[8px] rounded-[8px] cursor-pointer bg-transparent transition-all duration-200 w-full',
-          currentStatus === 'Default' && 'py-[8px] px-[4px] text-[var(--gray-12)]',
-          currentStatus === 'Hover' && 'py-[8px] px-[8px] bg-[var(--red-2)] text-[var(--red-12)]',
-          currentStatus === 'Click' && 'py-[8px] px-[8px] bg-[var(--red-3)] text-[var(--red-12)]',
+          'flex items-center gap-[4px] rounded-[8px] cursor-pointer bg-transparent transition-all duration-200 w-full px-[8px] py-[12px] h-[40px]',
+          currentStatus === 'Default' && 'text-[var(--gray-12)]',
+          currentStatus === 'Hover' && 'bg-[var(--red-2)] text-[var(--red-12)]',
+          currentStatus === 'Click' && 'bg-[var(--red-3)] text-[var(--red-12)]',
           className,
         )}
         style={{ fontFamily: "'Raleway', sans-serif", fontSize: '14px', fontWeight: 500 }}

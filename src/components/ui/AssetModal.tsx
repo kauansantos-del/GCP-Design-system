@@ -136,12 +136,15 @@ export function AssetModal({
             className="relative mx-5 rounded-2xl overflow-hidden border border-[var(--gray-4)] h-[440px] md:h-[500px]"
             style={{ background: isIcon ? 'var(--gray-2)' : 'var(--gray-3)' }}
           >
-            {/* Soft inner glow for depth */}
-            <div
-              aria-hidden
-              className="absolute inset-0 pointer-events-none"
-              style={{ background: 'radial-gradient(ellipse at center, rgba(255,255,255,0.5) 0%, transparent 65%)' }}
-            />
+            {/* Soft inner glow for depth — skip when previewing an icon
+                so the dark theme doesn't render a glowing halo. */}
+            {!isIcon && (
+              <div
+                aria-hidden
+                className="absolute inset-0 pointer-events-none"
+                style={{ background: 'radial-gradient(ellipse at center, rgba(255,255,255,0.5) 0%, transparent 65%)' }}
+              />
+            )}
 
             {/* Image (animated) */}
             <div className="absolute inset-0 flex items-center justify-center p-6 md:p-10">

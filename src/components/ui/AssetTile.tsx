@@ -41,12 +41,15 @@ export function AssetTile({
           className={`relative ${isIcon ? 'aspect-square' : 'aspect-[4/3]'} flex items-center justify-center overflow-hidden`}
           style={{ background: isIcon ? 'var(--gray-2)' : 'var(--gray-2)' }}
         >
-          {/* Soft inner glow */}
-          <div
-            aria-hidden
-            className="absolute inset-0 pointer-events-none"
-            style={{ background: 'radial-gradient(ellipse at center, rgba(255,255,255,0.55) 0%, transparent 70%)' }}
-          />
+          {/* Soft inner glow — only on renders. Icons stay clean so they
+              don't look like they have a halo on the dark theme. */}
+          {!isIcon && (
+            <div
+              aria-hidden
+              className="absolute inset-0 pointer-events-none"
+              style={{ background: 'radial-gradient(ellipse at center, rgba(255,255,255,0.55) 0%, transparent 70%)' }}
+            />
+          )}
 
           {/* Subtle bottom shadow line for grounding (renders only) */}
           {!isIcon && (

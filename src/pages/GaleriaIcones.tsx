@@ -14,7 +14,7 @@ const itemVar = {
   visible: { opacity: 1, y: 0, filter: 'blur(0px)', transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] as const } },
 }
 
-const ICON_FILTER = '[filter:invert(15%)_sepia(7%)_saturate(280%)_hue-rotate(190deg)]'
+const ICON_FILTER = 'icon-tinted'
 
 const STYLE_PREFERENCE: StyleId[] = ['outline', 'solid', 'duotone']
 

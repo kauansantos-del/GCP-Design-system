@@ -337,3 +337,14 @@ body {
 .scroll-elegant::-webkit-scrollbar-corner {
   background: transparent;
 }
+
+/* ============================================================
+   ICON TINT — Hugeicons SVGs ship with fill="#28303F" (dark navy).
+   Light theme: subtle blue-gray. Dark theme: near-white for contrast.
+   ============================================================ */
+.icon-tinted {
+  filter: invert(15%) sepia(7%) saturate(280%) hue-rotate(190deg);
+}
+.dark .icon-tinted {
+  filter: brightness(0) invert(1) opacity(0.92);
+}

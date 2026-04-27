@@ -1,6 +1,8 @@
 import { motion } from 'framer-motion'
 import { useState } from 'react'
 import { AppSidebar } from '@/components/ui/AppSidebar'
+import { CodeBlock } from '@/components/ui/CodeBlock'
+import appSidebarSource from '@/components/ui/AppSidebar.tsx?raw'
 
 const projects = [
   { id: 'p1', label: 'Residencial Flor do Campo' },
@@ -84,6 +86,11 @@ export function AppSidebars() {
             </p>
           </div>
         </div>
+      </div>
+
+      <SectionTitle>Código</SectionTitle>
+      <div className="mb-10">
+        <CodeBlock code={appSidebarSource} />
       </div>
 
       <SectionTitle>Atributos (Props)</SectionTitle>

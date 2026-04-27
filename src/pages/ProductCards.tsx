@@ -2,6 +2,10 @@ import { motion } from 'framer-motion'
 import { ProductCard } from '@/components/ui/ProductCard'
 import { CategoryNavRow } from '@/components/ui/CategoryNavRow'
 import { CartLineItem } from '@/components/ui/CartLineItem'
+import { CodeBlock } from '@/components/ui/CodeBlock'
+import productCardSource from '@/components/ui/ProductCard.tsx?raw'
+import categoryNavRowSource from '@/components/ui/CategoryNavRow.tsx?raw'
+import cartLineItemSource from '@/components/ui/CartLineItem.tsx?raw'
 
 const statuses = ['idle', 'hover', 'active'] as const
 
@@ -122,6 +126,21 @@ export function ProductCards() {
             </div>
           ))}
         </div>
+      </div>
+
+      <SectionTitle>Código — ProductCard</SectionTitle>
+      <div className="mb-8">
+        <CodeBlock code={productCardSource} />
+      </div>
+
+      <SectionTitle>Código — CategoryNavRow</SectionTitle>
+      <div className="mb-8">
+        <CodeBlock code={categoryNavRowSource} />
+      </div>
+
+      <SectionTitle>Código — CartLineItem</SectionTitle>
+      <div className="mb-10">
+        <CodeBlock code={cartLineItemSource} />
       </div>
 
       <SectionTitle>Mapeamento Figma → Design System</SectionTitle>

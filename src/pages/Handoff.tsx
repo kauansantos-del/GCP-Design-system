@@ -1,39 +1,44 @@
 import { motion } from 'framer-motion'
+import { useState } from 'react'
+import { downloadBundle, handoffPackages } from '@/lib/handoffPackages'
 
-const packages = [
+type PackageId = 'css' | 'tokens' | 'tailwind'
+
+type Pkg = {
+  id: PackageId
+  label: string
+  description: string
+  ext: string
+  accent: string
+  download: () => void
+}
+
+const packages: Pkg[] = [
   {
     id: 'css',
     label: 'CSS Variables',
-    description: 'Todos os tokens prontos como custom properties. Cole no :root e usa.',
+    description: 'Todos os tokens (cores light + dark, tipografia, semânticos) prontos como custom properties. Cole no :root e usa.',
     ext: '.css',
-    size: '~ 8 KB',
     accent: 'var(--principal-9)',
+    download: () => handoffPackages.css(),
   },
   {
     id: 'tokens',
     label: 'Tokens JSON',
     description: 'Estrutura compatível com Style Dictionary, Tokens Studio e Figma.',
     ext: '.json',
-    size: '~ 14 KB',
     accent: 'var(--teal-9)',
+    download: () => handoffPackages.json(),
   },
   {
     id: 'tailwind',
     label: 'Tailwind Preset',
-    description: 'Plugin pronto pra dropar no tailwind.config — cores, espaçamento, tipografia.',
+    description: 'Preset TS pronto pra dropar no tailwind.config — cores e font-family.',
     ext: '.ts',
-    size: '~ 6 KB',
     accent: 'var(--green-9)',
+    download: () => handoffPackages.tailwind(),
   },
-  {
-    id: 'icons',
-    label: 'Ícones SVG',
-    description: 'Pacote completo da galeria, organizado por categoria.',
-    ext: '.zip',
-    size: '~ 240 KB',
-    accent: 'var(--yellow-9)',
-  },
-] as const
+]
 
 const itemVar = {
   hidden: { opacity: 0, y: 12, filter: 'blur(4px)' },
@@ -41,6 +46,19 @@ const itemVar = {
 }
 
 export function Handoff() {
+  const [bundleState, setBundleState] = useState<'idle' | 'generating' | 'done'>('idle')
+
+  const handleBundle = async () => {
+    setBundleState('generating')
+    try {
+      await downloadBundle()
+      setBundleState('done')
+      setTimeout(() => setBundleState('idle'), 1800)
+    } catch {
+      setBundleState('idle')
+    }
+  }
+
   return (
     <motion.div initial="hidden" animate="visible" variants={{ visible: { transition: { staggerChildren: 0.05 } } }}>
       <motion.header variants={itemVar} className="mb-10 pb-8 border-b border-[var(--gray-5)]">
@@ -66,8 +84,10 @@ export function Handoff() {
 
       <motion.div variants={itemVar} className="mb-10">
         <button
-          disabled
-          className="group relative w-full p-6 rounded-2xl border border-[var(--gray-5)] bg-gradient-to-r from-[var(--gray-1)] via-[var(--principal-2)] to-[var(--gray-1)] text-left overflow-hidden cursor-not-allowed"
+          type="button"
+          onClick={handleBundle}
+          disabled={bundleState === 'generating'}
+          className="group relative w-full p-6 rounded-2xl border border-[var(--gray-5)] bg-gradient-to-r from-[var(--gray-1)] via-[var(--principal-2)] to-[var(--gray-1)] text-left overflow-hidden cursor-pointer hover:border-[var(--gray-7)] transition-colors disabled:cursor-wait"
         >
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
             <div>
@@ -84,26 +104,41 @@ export function Handoff() {
                 gcp-design-system.zip
               </h2>
               <p className="text-[var(--gray-11)]" style={{ fontFamily: "'Raleway', sans-serif", fontSize: '0.875rem' }}>
-                Tudo num arquivo só — CSS + JSON + Tailwind + ícones. <span className="text-[var(--gray-9)]">(em breve)</span>
+                Tudo num arquivo só — README, CSS, tokens JSON e preset Tailwind.
               </p>
             </div>
             <span
-              className="shrink-0 inline-flex items-center gap-2 px-5 py-3 rounded-full bg-[var(--gray-12)] text-[var(--gray-1)] opacity-50"
+              className="shrink-0 inline-flex items-center gap-2 px-5 py-3 rounded-full bg-[var(--gray-12)] text-[var(--gray-1)] group-hover:opacity-90 transition-opacity"
               style={{ fontFamily: "'Archivo', sans-serif", fontSize: '0.875rem', fontWeight: 600 }}
             >
-              <DownloadIcon />
-              Baixar tudo (.zip)
+              {bundleState === 'generating' ? (
+                <>
+                  <Spinner />
+                  Gerando…
+                </>
+              ) : bundleState === 'done' ? (
+                <>
+                  <CheckIcon />
+                  Baixado
+                </>
+              ) : (
+                <>
+                  <DownloadIcon />
+                  Baixar tudo (.zip)
+                </>
+              )}
             </span>
           </div>
         </button>
       </motion.div>
 
-      <motion.div variants={itemVar} className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-12">
+      <motion.div variants={itemVar} className="grid grid-cols-1 md:grid-cols-3 gap-3 mb-12">
         {packages.map((p) => (
           <motion.div key={p.id} variants={itemVar}>
             <button
-              disabled
-              className="group w-full text-left p-5 rounded-xl border border-[var(--gray-5)] bg-[var(--gray-1)] hover:border-[var(--gray-7)] transition-colors disabled:opacity-90 disabled:cursor-not-allowed"
+              type="button"
+              onClick={p.download}
+              className="group w-full text-left p-5 rounded-xl border border-[var(--gray-5)] bg-[var(--gray-1)] hover:border-[var(--gray-7)] hover:shadow-[0_8px_20px_-12px_rgba(17,50,100,0.18)] cursor-pointer transition-all"
             >
               <div className="flex items-start justify-between mb-4">
                 <div
@@ -112,7 +147,7 @@ export function Handoff() {
                 >
                   {p.ext.replace('.', '').toUpperCase()}
                 </div>
-                <DownloadIcon className="text-[var(--gray-9)] group-hover:text-[var(--gray-12)] transition-colors" />
+                <DownloadIcon className="text-[var(--gray-9)] group-hover:text-[var(--gray-12)] group-hover:translate-y-0.5 transition-all" />
               </div>
               <div
                 className="text-[var(--gray-12)] mb-1"
@@ -132,13 +167,6 @@ export function Handoff() {
                   style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '0.6875rem', fontWeight: 500 }}
                 >
                   {p.ext}
-                </span>
-                <span className="w-1 h-1 rounded-full bg-[var(--gray-7)]" />
-                <span
-                  className="text-[var(--gray-10)]"
-                  style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '0.6875rem', fontWeight: 500 }}
-                >
-                  {p.size}
                 </span>
               </div>
             </button>
@@ -164,6 +192,22 @@ function DownloadIcon({ className = '' }: { className?: string }) {
     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className={className}>
       <path d="M8 2V10M8 10L4.5 6.5M8 10L11.5 6.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
       <path d="M2.5 12V13.5C2.5 13.7761 2.72386 14 3 14H13C13.2761 14 13.5 13.7761 13.5 13.5V12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+    </svg>
+  )
+}
+
+function Spinner() {
+  return (
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" className="animate-spin">
+      <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeDasharray="40 60" />
+    </svg>
+  )
+}
+
+function CheckIcon() {
+  return (
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+      <polyline points="20 6 9 17 4 12" />
     </svg>
   )
 }

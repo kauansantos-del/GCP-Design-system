@@ -6,6 +6,8 @@ import {
   objetosPages,
   construirPages,
 } from '@/components/ui/CategoryPanel'
+import { CodeBlock } from '@/components/ui/CodeBlock'
+import categoryPanelSource from '@/components/ui/CategoryPanel.tsx?raw'
 
 const pageVariants = {
   initial: { opacity: 0, y: 12, filter: 'blur(4px)' },
@@ -122,6 +124,11 @@ export function CategoryPanels() {
       <div className="mb-10 grid grid-cols-1 sm:grid-cols-2 gap-3">
         <VariantList title="Objetos" pages={objetosPages.map((p) => p.title)} accent="var(--principal-9)" />
         <VariantList title="Construir" pages={construirPages.map((p) => p.title)} accent="var(--teal-9)" />
+      </div>
+
+      <SectionTitle>Código</SectionTitle>
+      <div className="mb-10">
+        <CodeBlock code={categoryPanelSource} />
       </div>
 
       <SectionTitle>Atributos (Props)</SectionTitle>

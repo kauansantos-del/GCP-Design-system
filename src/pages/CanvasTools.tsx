@@ -1,6 +1,8 @@
 import { motion } from 'framer-motion'
 import { useState } from 'react'
 import { CanvasToolButton, type CanvasTool, type CanvasToolStatus } from '@/components/ui/CanvasToolButton'
+import { CodeBlock } from '@/components/ui/CodeBlock'
+import canvasToolButtonSource from '@/components/ui/CanvasToolButton.tsx?raw'
 
 const tools: CanvasTool[] = [
   'undo', 'select', 'wall', 'ellipse', 'square', 'pencil', 'line', 'eraser',
@@ -70,6 +72,11 @@ export function CanvasTools() {
             ))}
           </tbody>
         </table>
+      </div>
+
+      <SectionTitle>Código</SectionTitle>
+      <div className="mb-10">
+        <CodeBlock code={canvasToolButtonSource} />
       </div>
 
       <SectionTitle>Atributos (Props)</SectionTitle>

@@ -24,21 +24,6 @@ export function Tooltips() {
         Componente de tooltip informativo que aparece ao passar o mouse sobre um icone. Suporta posicionamento acima ou abaixo, alinhado a esquerda ou direita.
       </p>
 
-      {/* Controls */}
-      <div className="flex flex-wrap gap-6 mb-10 p-5 rounded-xl bg-[var(--gray-2)] border border-[var(--border)]">
-        <ControlGroup label="sentido">
-          {sentidos.map((s) => (
-            <Chip key={s} active={sentido === s} onClick={() => setSentido(s)}>{s}</Chip>
-          ))}
-        </ControlGroup>
-        <ControlGroup label="showTooltipLarge">
-          <Toggle active={showLarge} onToggle={() => setShowLarge(!showLarge)} />
-        </ControlGroup>
-        <ControlGroup label="showTooltipSmall">
-          <Toggle active={showSmall} onToggle={() => setShowSmall(!showSmall)} />
-        </ControlGroup>
-      </div>
-
       {/* Preview — all 4 variants in a grid */}
       <div className="mb-10">
         <SectionTitle>Preview</SectionTitle>
@@ -79,10 +64,25 @@ export function Tooltips() {
       <div className="mb-10">
         <SectionTitle>Interativo</SectionTitle>
         <p className="text-[var(--gray-11)] mb-4" style={{ fontFamily: "'Raleway', sans-serif", fontSize: '0.875rem' }}>
-          Passe o mouse sobre o icone para ver o tooltip aparecer.
+          Passe o mouse sobre o ícone para ver o tooltip aparecer com fade + slide animados.
         </p>
         <div className="flex items-center justify-center py-32 rounded-xl bg-[var(--gray-1)] border border-[var(--border)]">
           <Tooltip sentido={sentido} showTooltipLarge={showLarge} showTooltipSmall={showSmall} />
+        </div>
+
+        {/* Controls */}
+        <div className="flex flex-wrap gap-6 mt-4 p-5 rounded-xl bg-[var(--gray-2)] border border-[var(--border)]">
+          <ControlGroup label="sentido">
+            {sentidos.map((s) => (
+              <Chip key={s} active={sentido === s} onClick={() => setSentido(s)}>{s}</Chip>
+            ))}
+          </ControlGroup>
+          <ControlGroup label="showTooltipLarge">
+            <Toggle active={showLarge} onToggle={() => setShowLarge(!showLarge)} />
+          </ControlGroup>
+          <ControlGroup label="showTooltipSmall">
+            <Toggle active={showSmall} onToggle={() => setShowSmall(!showSmall)} />
+          </ControlGroup>
         </div>
       </div>
 

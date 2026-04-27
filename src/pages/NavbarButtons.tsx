@@ -109,7 +109,7 @@ export function Navbar({
       </div>
 
       {/* Middle: Project list */}
-      <div className="flex-1 overflow-y-auto px-[16px] flex flex-col gap-[4px]">
+      <div className="flex-1 overflow-y-auto scroll-elegant px-[16px] flex flex-col gap-[4px]">
         {items.map((item, index) => (
           <NavbarButton key={index} type="Chat" text={item} />
         ))}

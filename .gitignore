@@ -24,3 +24,8 @@ dist-ssr
 *.sw?
 
 .vercel
+
+# Heavy gallery sources (1.5GB+ renders + icons 3D + full Hugeicons pack)
+# stay local. Deployable derivatives (thumb/medium WebP and Hugeicons SVG
+# copies) are emitted to public/galeria/ by `npm run thumbs`.
+/galeria/

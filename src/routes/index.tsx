@@ -22,12 +22,34 @@ import { Uploads } from '@/pages/Uploads'
 import { NavbarButtons } from '@/pages/NavbarButtons'
 import { NavbarButtonPage } from '@/pages/NavbarButtonPage'
 import { NotFound } from '@/pages/NotFound'
+import { Componentes } from '@/pages/Componentes'
+import { Documentacao } from '@/pages/Documentacao'
+import { Galeria } from '@/pages/Galeria'
+import { Renders } from '@/pages/Renders'
+import { Icons3DPage } from '@/pages/Icons3DPage'
+import { GaleriaIcones } from '@/pages/GaleriaIcones'
+import { Handoff } from '@/pages/Handoff'
+import { CanvasTools } from '@/pages/CanvasTools'
+import { ProductCards } from '@/pages/ProductCards'
+import { AppSidebars } from '@/pages/AppSidebars'
+import { CategoryPanels } from '@/pages/CategoryPanels'
 
 export const router = createBrowserRouter([
   {
     element: <RootLayout />,
     children: [
       { index: true, element: <Home /> },
+      { path: 'componentes', element: <Componentes /> },
+      { path: 'docs', element: <Documentacao /> },
+      { path: 'docs/handoff', element: <Handoff /> },
+      { path: 'galeria', element: <Galeria /> },
+      { path: 'galeria/renders', element: <Renders /> },
+      { path: 'galeria/icones-3d', element: <Icons3DPage /> },
+      { path: 'galeria/icones', element: <GaleriaIcones /> },
+      { path: 'canvas-tool', element: <CanvasTools /> },
+      { path: 'product-card', element: <ProductCards /> },
+      { path: 'app-sidebar', element: <AppSidebars /> },
+      { path: 'category-panel', element: <CategoryPanels /> },
       { path: 'cores', element: <Cores /> },
       { path: 'tipografia', element: <Tipografia /> },
       { path: 'spacing', element: <Spacing /> },

@@ -303,3 +303,37 @@ body {
 [data-radix-scroll-area-viewport]::-webkit-scrollbar {
   display: none;
 }
+
+/* ============================================================
+   ELEGANT SCROLLBAR — utility for any overflow container
+   ============================================================ */
+.scroll-elegant {
+  scrollbar-width: thin;
+  scrollbar-color: var(--gray-6) transparent;
+  scroll-behavior: smooth;
+}
+.scroll-elegant::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+.scroll-elegant::-webkit-scrollbar-track {
+  background: transparent;
+}
+.scroll-elegant::-webkit-scrollbar-thumb {
+  background: var(--gray-5);
+  border: 2px solid transparent;
+  background-clip: padding-box;
+  border-radius: 999px;
+  transition: background 200ms ease;
+}
+.scroll-elegant:hover::-webkit-scrollbar-thumb {
+  background: var(--gray-7);
+  background-clip: padding-box;
+}
+.scroll-elegant::-webkit-scrollbar-thumb:hover {
+  background: var(--gray-8);
+  background-clip: padding-box;
+}
+.scroll-elegant::-webkit-scrollbar-corner {
+  background: transparent;
+}
